@@ -1,0 +1,60 @@
+const fontFamily = {
+  RalewayExtraLight: 'Raleway-ExtraLight',
+  RalewayExtraLightItalic: 'Raleway-ExtraLightItalic',
+  RalewayLight: 'Raleway-Light',
+  RalewayLightItalic: 'Raleway-LightItalic',
+  RalewayRegular: 'Raleway-Regular',
+  RalewayRegularItalic: 'Raleway-RegularItalic',
+  RalewayMedium: 'Raleway-Medium',
+  RalewayMediumItalic: 'Raleway-MediumItalic',
+  RalewaySemiBold: 'Raleway-SemiBold',
+  RalewaySemiBoldItalic: 'Raleway-SemiBoldItalic',
+  RalewayBold: 'Raleway-Bold',
+  RalewayBoldItalic: 'Raleway-BoldItalic',
+  RalewayExtraBold: 'Raleway-ExtraBold',
+  RalewayExtraBoldItalic: 'Raleway-ExtraBoldItalic',
+  RalewayBlack: 'Raleway-Black',
+  RalewayBlackItalic: 'Raleway-BlackItalic',
+
+  MontserratRegular: 'Montserrat-Regular',
+  MontserratRegularItalic: 'Montserrat-RegularItalic',
+  MontserratThin: 'Montserrat-Thin',
+  MontserratThinItalic: 'Montserrat-ThinItalic',
+  MontserratExtraLight: 'Montserrat-ExtraLight',
+  MontserratExtraLightItalic: 'Montserrat-ExtraLightItalic',
+  MontserratLight: 'Montserrat-Light',
+  MontserratLightItalic: 'Montserrat-LightItalic',
+  MontserratMedium: 'Montserrat-Medium',
+  MontserratMediumItalic: 'Montserrat-MediumItalic',
+  MontserratSemiBold: 'Montserrat-SemiBold',
+  MontserratSemiBoldItalic: 'Montserrat-SemiBoldItalic',
+  MontserratBold: 'Montserrat-Bold',
+  MontserratBoldItalic: 'Montserrat-BoldItalic',
+  MontserratBlack: 'Montserrat-Black',
+  MontserratBlackItalic: 'Montserrat-BlackItalic',
+};
+
+const fontSize = {
+  twelve: 12,
+  fourteen: 14,
+  sixteen: 16,
+  eighteen: 18,
+  twenty: 20,
+  twentyFour: 24,
+  thirtySix: 36,
+  fourtyEight: 48,
+};
+
+const fontWeight = {
+  thin: '100',
+  extraLight: '200',
+  light: '300',
+  regular: '400',
+  medium: '500',
+  semiBold: '600',
+  bold: '700',
+  extraBold: '800',
+  black: '900',
+} as const;
+
+export { fontFamily, fontSize, fontWeight };

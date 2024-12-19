@@ -1,4 +1,4 @@
-package com.gamesexplorer
+package com.gamesExplorer
 
 import android.app.Application
 import com.facebook.react.PackageList
