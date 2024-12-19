@@ -8,7 +8,9 @@ export function changeTheme(
   state: ThemeState,
   action: PayloadAction<ColorSchemeName>,
 ) {
-  state.theme = action.payload || 'light';
-  state.colors = colors[action.payload || 'light'];
-  state.gradients = GRADIENTS[action.payload || 'light'];
+  const theme = action.payload || 'light';
+
+  state.theme = theme;
+  state.colors = colors[theme];
+  state.gradients = GRADIENTS[theme];
 }
