@@ -2,10 +2,9 @@ import { createSlice } from '@reduxjs/toolkit';
 
 import { colors } from '@theme/colors';
 import { GRADIENTS } from '@theme/gradients';
-import { colorSchemes, storeConstants } from '@constants';
+import { colorSchemes } from '@constants';
+import { themeSliceConstants } from '@constants/storeConstants';
 import { changeTheme } from '@store/actions/theme';
-
-const { theme: themeSliceConstants } = storeConstants;
 
 const initialThemeState = {
   theme: colorSchemes.light,
