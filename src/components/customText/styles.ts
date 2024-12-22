@@ -6,7 +6,7 @@ function textBlockStyles(colors: Colors) {
   return StyleSheet.create({
     textBlock: {
       color: colors.foreground,
-      fontFamily: fontFamily.NunitoSansRegular,
+      fontFamily: fontFamily.MontserratRegular,
     },
   });
 }

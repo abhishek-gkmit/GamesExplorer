@@ -12,7 +12,7 @@ import {
 declare global {
   interface TextBlockProps extends TextProps {
     style?: StyleProp<TextStyle>;
-    children?: string;
+    children?: string | string[];
   }
 
   interface Icon {
@@ -71,5 +71,12 @@ declare global {
     from?: number;
     to?: number;
     children: ReactNode;
+  }
+
+  interface InputComponentProps extends TextInputProps {
+    setValue: (value: string) => void;
+    errorMsg?: string;
+    label?: string;
+    icon?: Icon;
   }
 }

@@ -1,6 +1,7 @@
 const commonColors = {
   warning: '#fff300',
-  error: '#ff0000',
+  error: '#ff616a',
+  errorDark: '#ff0000',
 
   darkGunmetal: '#18222c',
   paleViolet: '#c9a0ff',
@@ -52,6 +53,10 @@ export const colors = {
     foregroundLighter: commonColors.white,
     foregroundDarker: commonColors.platinum,
     ...commonColors,
+    inputBackgroundColor: commonColors.darkGunmetal,
+    inputBorderColorUnFocused: commonColors.white3,
+    inputIconColorUnFocused: commonColors.white3,
+    showPasswordBtnIconColor: commonColors.brightGray,
   },
 
   light: {
@@ -64,5 +69,9 @@ export const colors = {
     foregroundDarker: commonColors.black,
     foregroundLighter: commonColors.darkGunmetal,
     ...commonColors,
+    inputBackgroundColor: commonColors.white,
+    inputBorderColorUnFocused: commonColors.black3,
+    inputIconColorUnFocused: commonColors.black3,
+    showPasswordBtnIconColor: commonColors.black5,
   },
 };
