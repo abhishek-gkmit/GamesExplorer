@@ -46,7 +46,7 @@ function MainNavigator() {
 
   return (
     <>
-      <StatusBar backgroundColor={colors.background} />
+      <StatusBar backgroundColor={colors.primary} />
       <NavigationContainer>
         {isUserLoggedIn ? <MainStack /> : <Auth />}
       </NavigationContainer>
