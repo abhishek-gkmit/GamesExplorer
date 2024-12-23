@@ -5,4 +5,7 @@ export const apiConstants = {
   API_KEY,
 };
 
-export const apiEndpoints = {};
+export const apiEndpoints = {
+  login: 'auth/login',
+  signUp: 'auth/register',
+};
