@@ -1,16 +1,15 @@
 import { TouchableOpacity, View } from 'react-native';
-import Video from 'react-native-video';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import FastImage from 'react-native-fast-image';
+import LinearGradient from 'react-native-linear-gradient';
 
 import TextBlock from '@components/customText';
 import useStyles from '@hooks/useStyles';
-import gameCardStyles from './styles';
-import { useState } from 'react';
-import FastImage from 'react-native-fast-image';
-import LinearGradient from 'react-native-linear-gradient';
 import { useAppSelector } from '@store/index';
 import { selectTheme } from '@store/selectors/theme';
+
+import gameCardStyles from './styles';
 
 function Rating({ rating }: RatingProps) {
   const { colors } = useAppSelector(selectTheme);
