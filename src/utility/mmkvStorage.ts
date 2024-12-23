@@ -12,4 +12,8 @@ function getSavedUserKey() {
   return storage.getString(userAuthKey);
 }
 
-export { saveUserKey, getSavedUserKey };
+function clearUserKey() {
+  storage.delete(userAuthKey);
+}
+
+export { saveUserKey, getSavedUserKey, clearUserKey };

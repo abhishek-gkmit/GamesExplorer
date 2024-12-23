@@ -11,6 +11,7 @@ import { selectTheme } from '@store/selectors/theme';
 import { selectIsUserLoggedIn } from '@store/selectors/user';
 import { setUserKey } from '@store/reducers/user';
 import { getSavedUserKey } from '@utility/mmkvStorage';
+import { setTokenInterceptor } from '@utility/helpers';
 
 function MainNavigator() {
   const theme = useColorScheme();
@@ -28,6 +29,7 @@ function MainNavigator() {
     const userKey = getSavedUserKey();
     if (userKey) {
       dispatch(setUserKey(userKey));
+      setTokenInterceptor(userKey);
     }
   }, []);
 

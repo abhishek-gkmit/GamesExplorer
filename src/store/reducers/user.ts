@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 import { userSliceConstants } from '@constants/storeConstants';
-import { setUserKeyAction } from '@store/actions/user';
+import { setUserKeyAction, removeUserKeyAction } from '@store/actions/user';
 
 const initialUserState: UserState = {
   isUserLoggedIn: false,
@@ -13,11 +13,13 @@ const userSlice = createSlice({
   initialState: initialUserState,
   reducers: {
     setUserKeyAction,
+    removeUserKeyAction,
   },
 });
 
 const userReducer = userSlice.reducer;
 
-const { setUserKeyAction: setUserKey } = userSlice.actions;
+const { setUserKeyAction: setUserKey, removeUserKeyAction: removeUserKey } =
+  userSlice.actions;
 
-export { userReducer, setUserKey };
+export { userReducer, setUserKey, removeUserKey };
