@@ -49,7 +49,7 @@ const BottomTab = memo(({ isFocused, title, onPress }: BottomTabProps) => {
 
   const animate = useCallback(() => {
     Animated.timing(position, {
-      toValue: 1.2,
+      toValue: 1,
       duration: 200,
       useNativeDriver: true,
     }).start();
@@ -66,7 +66,7 @@ const BottomTab = memo(({ isFocused, title, onPress }: BottomTabProps) => {
       <Animated.View style={[styles.tab, animatedStyles]}>
         <MaterialIcons
           name={getIconName(title)}
-          size={24}
+          size={30}
           color={colors.primary}
         />
       </Animated.View>
