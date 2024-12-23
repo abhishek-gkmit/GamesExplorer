@@ -43,10 +43,12 @@ function gameCardStyles(colors: Colors) {
     name: {
       fontSize: fontSize.eighteen,
       fontFamily: fontFamily.MontserratMedium,
+      color: colors.white,
     },
 
     genere: {
       fontSize: fontSize.twelve,
+      color: colors.white,
     },
 
     ratingContainer: {
@@ -58,6 +60,7 @@ function gameCardStyles(colors: Colors) {
 
     rating: {
       fontSize: fontSize.twelve,
+      color: colors.white,
     },
 
     gamePlatforms: {
@@ -74,7 +77,7 @@ function gameCardStyles(colors: Colors) {
     },
 
     addToCollectionsBtn: {
-      backgroundColor: colors.backgroundDarker,
+      backgroundColor: colors.vampireBlack,
       marginLeft: horizontalScale(40),
       padding: moderateScale(5),
       position: 'absolute',
