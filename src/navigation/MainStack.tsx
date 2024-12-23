@@ -1,14 +1,17 @@
 import ROUTES from '@constants/routes';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import AuthScreen from '@screens/auth';
+import BottomTabsNavigator from './BottomTabs';
 
 const Stack = createNativeStackNavigator<MainStackParamList>();
 
 function MainStack() {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name={ROUTES.MainStack.AuthScreen} component={AuthScreen} />
+      <Stack.Screen
+        name={ROUTES.MainStack.BottomTabs}
+        component={BottomTabsNavigator}
+      />
     </Stack.Navigator>
   );
 }

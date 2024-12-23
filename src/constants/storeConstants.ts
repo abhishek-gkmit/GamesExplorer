@@ -2,4 +2,8 @@ const themeSliceConstants = {
   name: 'theme',
 };
 
-export { themeSliceConstants };
+const userSliceConstants = {
+  name: 'user',
+};
+
+export { themeSliceConstants, userSliceConstants };

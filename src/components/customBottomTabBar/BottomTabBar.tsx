@@ -2,27 +2,28 @@ import { memo, useMemo, useCallback, useEffect } from 'react';
 import { View, Pressable, Animated, useAnimatedValue } from 'react-native';
 import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 import uuid from 'react-native-uuid';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 import useStyles from '@hooks/useStyles';
-import useThemeContext from '@hooks/useThemeContext';
+import { useAppSelector } from '@store/index';
+import { selectTheme } from '@store/selectors/theme';
 import ROUTES from '@constants/routes';
 
 import bottomTabBarStyles from './styles';
 
 function getIconName(routeName: string) {
   switch (routeName) {
-    case ROUTES.BottomTabs.Dashboard:
+    case ROUTES.BottomTabs.Home:
       return 'home';
 
-    case ROUTES.BottomTabs.Favourites:
-      return 'heart';
+    case ROUTES.BottomTabs.Search:
+      return 'search';
 
-    // case ROUTES.BottomTabs.MealPlanner:
-    //   return 'clipboard-text-outline';
+    case ROUTES.BottomTabs.Collections:
+      return 'my-library-add';
 
     default:
-      return 'crosshairs-question';
+      return 'question-mark';
   }
 }
 
@@ -30,10 +31,20 @@ const BottomTab = memo(({ isFocused, title, onPress }: BottomTabProps) => {
   const position = useAnimatedValue(0.8);
 
   const styles = useStyles(bottomTabBarStyles);
-  const { colors } = useThemeContext();
+  const { colors } = useAppSelector(selectTheme);
 
   const animatedStyles = useMemo(() => {
-    return { transform: [{ scale: position }, { translateY: position.interpolate({ inputRange: [0.8, 1.2], outputRange: [1, -5] }) }] };
+    return {
+      transform: [
+        { scale: position },
+        {
+          translateY: position.interpolate({
+            inputRange: [0.8, 1.2],
+            outputRange: [1, -5],
+          }),
+        },
+      ],
+    };
   }, [position]);
 
   const animate = useCallback(() => {
@@ -53,7 +64,7 @@ const BottomTab = memo(({ isFocused, title, onPress }: BottomTabProps) => {
   return (
     <Pressable style={styles.tabContainer} onPress={onPress}>
       <Animated.View style={[styles.tab, animatedStyles]}>
-        <MaterialCommunityIcons
+        <MaterialIcons
           name={getIconName(title)}
           size={24}
           color={colors.primary}

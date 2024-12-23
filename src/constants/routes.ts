@@ -1,6 +1,13 @@
 const ROUTES = {
   MainStack: {
-    AuthScreen: 'AuthScreen',
+    BottomTabs: 'BottomTabs',
+    GameDetails: 'GameDetails',
+  },
+
+  BottomTabs: {
+    Home: 'Home',
+    Search: 'Search',
+    Collections: 'Collections',
   },
 } as const;
 
