@@ -1,0 +1,15 @@
+import { MMKV } from 'react-native-mmkv';
+
+import { userAuthKey } from '@constants/storageKeys';
+
+const storage = new MMKV();
+
+function saveUserKey(key: string) {
+  storage.set(userAuthKey, key);
+}
+
+function getSavedUserKey() {
+  return storage.getString(userAuthKey);
+}
+
+export { saveUserKey, getSavedUserKey };
