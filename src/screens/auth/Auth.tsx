@@ -14,7 +14,7 @@ import Input from '@components/input';
 import FadeInSlideUp from '@components/animations/fadeInSlideUp';
 import Loader from '@components/customLoader';
 import useGlobalStyles from '@hooks/useGlobalStyles';
-import useAuthMutations from '@network/hooks/useAuthMutaions';
+import useAuthMutations from '@network/hooks/useAuthMutations';
 import useStyles from '@hooks/useStyles';
 import {
   emailRegEx,
