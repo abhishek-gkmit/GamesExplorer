@@ -6,7 +6,7 @@ export async function handleError(error: AxiosError) {
   const { status: statusCode } = error;
 
   if (statusCode === 400) {
-    showErrorToast('Error', 'There is some Error');
+    showErrorToast('Authentication Error', 'Wrong credentials');
   } else if (statusCode === 404) {
     showErrorToast('Not Found', 'Resource not found');
   } else if (statusCode === 500) {
@@ -15,5 +15,5 @@ export async function handleError(error: AxiosError) {
     showErrorToast('Unknown Error', 'Please contact the developer');
   }
 
-  return null;
+  return error;
 }

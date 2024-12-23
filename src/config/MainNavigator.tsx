@@ -1,10 +1,11 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { StatusBar, useColorScheme } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import Toast from 'react-native-toast-message';
 
 import MainStack from '@navigation/MainStack';
 import Auth from '@screens/auth';
+import Loader from '@components/customLoader';
 import { useAppDispatch, useAppSelector } from '@store';
 import { changeThemeAction } from '@store/reducers/theme';
 import { selectTheme } from '@store/selectors/theme';
@@ -14,6 +15,8 @@ import { getSavedUserKey } from '@utility/mmkvStorage';
 import { setTokenInterceptor } from '@utility/helpers';
 
 function MainNavigator() {
+  const [loading, setLoading] = useState(true);
+
   const theme = useColorScheme();
 
   const { colors } = useAppSelector(selectTheme);
@@ -26,12 +29,20 @@ function MainNavigator() {
   }, [theme]);
 
   useEffect(() => {
+    setLoading(true);
+
     const userKey = getSavedUserKey();
     if (userKey) {
       dispatch(setUserKey(userKey));
       setTokenInterceptor(userKey);
     }
+
+    setLoading(false);
   }, []);
+
+  if (loading) {
+    return <Loader />;
+  }
 
   return (
     <>
