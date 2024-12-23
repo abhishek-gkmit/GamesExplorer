@@ -18,6 +18,8 @@ const commonColors = {
   auroMetalSaurus: '#6c6f87',
   platinum: '#e2e2e7',
   greenPigment: '#06aa58',
+  meatBrown: '#ea8c31',
+  cadmiumOrange: '#ea8c31',
   black: '#000000',
   black0: 'rgba(0, 0, 0, 0.0)',
   black1: 'rgba(0, 0, 0, 0.1)',
@@ -57,6 +59,7 @@ export const colors = {
     inputBorderColorUnFocused: commonColors.white3,
     inputIconColorUnFocused: commonColors.white3,
     showPasswordBtnIconColor: commonColors.brightGray,
+    ratingStarColor: commonColors.meatBrown,
   },
 
   light: {
@@ -73,5 +76,6 @@ export const colors = {
     inputBorderColorUnFocused: commonColors.black3,
     inputIconColorUnFocused: commonColors.black3,
     showPasswordBtnIconColor: commonColors.black5,
+    ratingStarColor: commonColors.cadmiumOrange,
   },
 };

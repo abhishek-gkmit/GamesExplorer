@@ -79,4 +79,16 @@ declare global {
     label?: string;
     icon?: Icon;
   }
+
+  interface GamePlatformsProps {
+    platforms: string[];
+  }
+
+  interface RatingProps {
+    rating: number;
+  }
+
+  interface GameCardProps {
+    gameDetails: GameDetailsShort;
+  }
 }
