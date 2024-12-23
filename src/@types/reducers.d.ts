@@ -3,3 +3,8 @@ interface ThemeState {
   colors: Colors;
   gradients: Gradients;
 }
+
+interface UserState {
+  isUserLoggedIn: boolean;
+  userKey: string;
+}
