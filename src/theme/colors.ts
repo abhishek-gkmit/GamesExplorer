@@ -1,6 +1,6 @@
 const commonColors = {
   warning: '#fff300',
-  error: '#ff616a',
+  error: '#f5959b',
   errorDark: '#ff0000',
 
   darkGunmetal: '#18222c',

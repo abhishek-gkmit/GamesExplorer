@@ -1,15 +1,16 @@
-import {View, ActivityIndicator, StyleSheet} from 'react-native';
+import { View, ActivityIndicator, StyleSheet } from 'react-native';
 
 import useStyles from '@hooks/useStyles';
-import useThemeContext from '@hooks/useThemeContext';
+import useGlobalStyles from '@hooks/useGlobalStyles';
+import { useAppSelector } from '@store/index';
+import { selectTheme } from '@store/selectors/theme';
 
-import getThemedStyles from '@theme/globalStyles';
 import getStyles from './styles';
 
-function Loader({size}: CustomLoaderProps) {
-  const {colors} = useThemeContext();
+function Loader({ size }: CustomLoaderProps) {
+  const { colors } = useAppSelector(selectTheme);
 
-  const globalStyles = useStyles(getThemedStyles);
+  const globalStyles = useGlobalStyles();
   const localStyles = useStyles(getStyles);
 
   return (

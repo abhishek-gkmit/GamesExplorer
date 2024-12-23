@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 function getThemedStyles(colors: Colors) {
   return StyleSheet.create({
     loaderContainer: {
-      backgroundColor: colors.black0,
+      backgroundColor: colors.background,
     },
   });
 }
