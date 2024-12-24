@@ -1,10 +1,11 @@
+import { StyleSheet } from 'react-native';
+
 import { fontFamily, fontSize } from '@constants/fonts';
 import {
   horizontalScale,
   moderateScale,
   verticalScale,
 } from '@utility/scalingHelpers';
-import { StyleSheet } from 'react-native';
 
 function homeStyles(colors: Colors) {
   return StyleSheet.create({

@@ -6,11 +6,11 @@ import TextBlock from '@components/customText';
 import Loader from '@components/customLoader';
 import ToggleFilterList from '@components/toggleFilterList';
 import useStyles from '@hooks/useStyles';
+import useGamesListQuery from '@network/hooks/useGamesListQuery';
 import { loginBackground } from '@constants/images';
 import { categoryFilters } from '@constants';
 
 import homeStyles from './styles';
-import useGamesListQuery from '@network/hooks/useGamesListQuery';
 
 function Home() {
   const [categories, setCategories] = useState<string[]>(['Action']);
