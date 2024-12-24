@@ -1,5 +1,7 @@
+import { formatGameDetailsList } from '@utility/dataFormatters';
+
 import { apiConstants, apiEndpoints } from './apiConstants';
-import { _postForAuth } from './axiosMethods';
+import { _get, _post, _postForAuth } from './axiosMethods';
 
 async function login(email: string, password: string) {
   const data = {
@@ -34,4 +36,19 @@ async function signUp(username: string, email: string, password: string) {
   return res;
 }
 
-export { login, signUp };
+async function getGamesList(page: number, categories: string[]) {
+  const params = {
+    page,
+    genres: categories
+      .map(category => category.toLowerCase())
+      .join(',')
+      .replaceAll(' ', '-'),
+  };
+
+  console.log('getting data for page', page);
+  const res = await _get(apiEndpoints.gameList, params);
+
+  return formatGameDetailsList(res.data);
+}
+
+export { login, signUp, getGamesList };
