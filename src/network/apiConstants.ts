@@ -8,4 +8,5 @@ export const apiConstants = {
 export const apiEndpoints = {
   login: 'auth/login',
   signUp: 'auth/register',
+  gameList: 'games',
 };

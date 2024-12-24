@@ -5,6 +5,9 @@ import { apiConstants } from './apiConstants';
 
 const instanceConfig: CreateAxiosDefaults = {
   baseURL: apiConstants.BASE_URL,
+  params: {
+    key: apiConstants.API_KEY,
+  },
 };
 
 const axiosInstance = axios.create(instanceConfig);

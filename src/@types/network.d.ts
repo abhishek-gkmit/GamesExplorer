@@ -64,7 +64,7 @@ interface GameDetailsShort {
   gameLogo: string;
   backgroundImage: string;
   platforms: string[];
-  generes: string[];
+  genres: string[];
   rating: number;
   ageRating: string;
 }
@@ -72,10 +72,9 @@ interface GameDetailsShort {
 interface GameListFilters {
   discover?: boolean;
   page?: number;
-  page_size?: number;
   search?: string;
-  search_precise?: boolean;
-  search_exact?: boolean;
+  searchPrecise?: boolean;
+  searchExact?: boolean;
   platforms?: string;
   genres?: string;
   tags?: string;
