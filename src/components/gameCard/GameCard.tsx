@@ -76,7 +76,7 @@ function GamePlatforms({ platforms }: GamePlatformsProps) {
 }
 
 function GameCard({ gameDetails }: GameCardProps) {
-  const { colors } = useAppSelector(selectTheme);
+  const { colors, gradients } = useAppSelector(selectTheme);
 
   const styles = useStyles(gameCardStyles);
 
@@ -86,7 +86,7 @@ function GameCard({ gameDetails }: GameCardProps) {
         style={styles.gameCardBackground}
         source={{ uri: gameDetails.backgroundImage }}>
         <LinearGradient
-          colors={[colors.black0, colors.black]}
+          colors={gradients.gameCard}
           locations={[0.3, 1]}
           style={styles.gradient}>
           <View style={styles.gameDetailsContainer}>
