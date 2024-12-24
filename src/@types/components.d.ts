@@ -49,6 +49,7 @@ declare global {
 
   interface CustomLoaderProps {
     size?: 'small' | 'large' | number;
+    style?: StyleProp<ViewStyle>;
   }
 
   interface EmptyListIndicatorProps {
@@ -90,5 +91,24 @@ declare global {
 
   interface GameCardProps {
     gameDetails: GameDetailsShort;
+  }
+
+  interface ToggleButtonProps {
+    title?: string;
+    toggleState?: boolean;
+    showIcon?: boolean;
+    onToggle?: (toggleState: boolean) => void;
+  }
+
+  interface ToggleFilterListProps {
+    filters: string[];
+    activeFilters: string[];
+    title?: string;
+    selectMultipleFilters?: boolean;
+    onFiltersChange?: (filters: string[]) => void;
+    style?: StyleProp<ViewStyle>;
+    textStyle?: StyleProp<TextStyle>;
+    scrollView?: StyleProp<ViewStyle>;
+    scrollViewContent?: StyleProp<ViewStyle>;
   }
 }

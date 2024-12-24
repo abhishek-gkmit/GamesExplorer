@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { TouchableOpacity, View } from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -10,6 +11,7 @@ import { useAppSelector } from '@store/index';
 import { selectTheme } from '@store/selectors/theme';
 
 import gameCardStyles from './styles';
+import { ellipsize } from '@utility/helpers';
 
 function Rating({ rating }: RatingProps) {
   const { colors } = useAppSelector(selectTheme);
@@ -85,7 +87,7 @@ function GameCard({ gameDetails }: GameCardProps) {
         source={{ uri: gameDetails.backgroundImage }}>
         <LinearGradient
           colors={[colors.black0, colors.black]}
-          locations={[0.5, 1]}
+          locations={[0.3, 1]}
           style={styles.gradient}>
           <View style={styles.gameDetailsContainer}>
             <FastImage
@@ -94,15 +96,12 @@ function GameCard({ gameDetails }: GameCardProps) {
             />
 
             <View style={styles.gameDetails}>
-              <TextBlock
-                style={styles.name}
-                ellipsizeMode="tail"
-                numberOfLines={1}>
-                {gameDetails.name}
+              <TextBlock style={styles.name}>
+                {ellipsize(gameDetails.name, 32)}
               </TextBlock>
 
               <TextBlock style={styles.genere}>
-                {gameDetails.generes[0]}
+                {gameDetails.genres[0]}
               </TextBlock>
 
               <Rating rating={gameDetails.rating} />

@@ -9,7 +9,6 @@ import { StyleSheet } from 'react-native';
 function gameCardStyles(colors: Colors) {
   return StyleSheet.create({
     gameCard: {
-      margin: moderateScale(20),
       borderRadius: moderateScale(10),
     },
 
@@ -25,7 +24,7 @@ function gameCardStyles(colors: Colors) {
 
     gameDetailsContainer: {
       flexDirection: 'row',
-      margin: moderateScale(15),
+      padding: moderateScale(15),
       gap: moderateScale(10),
       alignItems: 'center',
     },
