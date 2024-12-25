@@ -15,7 +15,7 @@ import homeStyles from './styles';
 function Home() {
   const [categories, setCategories] = useState<string[]>(['Action']);
 
-  const { gamesList, isLoading, fetchNextPage } = useGamesListQuery(categories);
+  const { gamesList, isLoading, getNextPage } = useGamesListQuery(categories);
 
   const styles = useStyles(homeStyles);
 
@@ -44,8 +44,8 @@ function Home() {
           keyExtractor={item => item.id + ''}
           renderItem={({ item }) => <GameCard gameDetails={item} />}
           contentContainerStyle={styles.gameListContent}
-          onEndReached={() => fetchNextPage()}
-          ListFooterComponent={() => <Loader style={styles.loader} />}
+          onEndReached={getNextPage}
+          ListFooterComponent={() => <Loader style={styles.listLoader} />}
           style={styles.gameList}
         />
       )}

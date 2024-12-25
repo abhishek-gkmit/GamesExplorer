@@ -37,6 +37,10 @@ function homeStyles(colors: Colors) {
       marginTop: verticalScale(20),
     },
 
+    listLoader: {
+      backgroundColor: colors.black0,
+    },
+
     toggleFilterList: {
       marginTop: verticalScale(15),
     },
