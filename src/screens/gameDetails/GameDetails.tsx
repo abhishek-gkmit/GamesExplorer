@@ -274,7 +274,7 @@ function GameDetails() {
 
       <Separator />
 
-      <GameTags />
+      <GameTags data={data} />
 
       <Separator />
 
