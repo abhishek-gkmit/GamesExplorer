@@ -27,7 +27,6 @@ function Search() {
   );
 
   const borderRadius = useSharedValue(20);
-  // const margin = useSharedValue(10);
 
   const { colors } = useAppSelector(selectTheme);
 
@@ -35,12 +34,10 @@ function Search() {
 
   const handleFocus = () => {
     borderRadius.value = withTiming(0);
-    // margin.value = withTiming(0);
   };
 
   const handleBlur = () => {
     borderRadius.value = withTiming(20);
-    // margin.value = withTiming(10);
   };
 
   return (
