@@ -1,5 +1,5 @@
-import { useEffect } from 'react';
 import { TouchableOpacity, View } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FastImage from 'react-native-fast-image';
@@ -9,9 +9,10 @@ import TextBlock from '@components/customText';
 import useStyles from '@hooks/useStyles';
 import { useAppSelector } from '@store/index';
 import { selectTheme } from '@store/selectors/theme';
+import { ellipsize, getPlatformIconName } from '@utility/helpers';
+import ROUTES from '@constants/routes';
 
 import gameCardStyles from './styles';
-import { ellipsize } from '@utility/helpers';
 
 function Rating({ rating }: RatingProps) {
   const { colors } = useAppSelector(selectTheme);
@@ -28,29 +29,6 @@ function Rating({ rating }: RatingProps) {
       />
     </View>
   );
-}
-
-function getPlatformIconName(platform: string) {
-  switch (platform.toLowerCase()) {
-    case 'pc':
-      return 'microsoft-windows';
-    case 'xbox':
-      return 'microsoft-xbox';
-    case 'playstation':
-      return 'sony-playstation';
-    case 'ios':
-      return 'apple-ios';
-    case 'android':
-      return 'android';
-    case 'mac':
-      return 'apple';
-    case 'linux':
-      return 'linux';
-    case 'nintendo':
-      return 'nintendo-switch';
-    default:
-      return 'web';
-  }
 }
 
 function GamePlatforms({ platforms }: GamePlatformsProps) {
@@ -78,10 +56,19 @@ function GamePlatforms({ platforms }: GamePlatformsProps) {
 function GameCard({ gameDetails }: GameCardProps) {
   const { colors, gradients } = useAppSelector(selectTheme);
 
+  const navigation = useNavigation<MainStackNavigationProp>();
+
   const styles = useStyles(gameCardStyles);
 
   return (
-    <TouchableOpacity style={styles.gameCard} activeOpacity={0.95}>
+    <TouchableOpacity
+      style={styles.gameCard}
+      activeOpacity={0.95}
+      onPress={() =>
+        navigation.navigate(ROUTES.MainStack.GameDetails, {
+          gameId: gameDetails.id + '',
+        })
+      }>
       <FastImage
         style={styles.gameCardBackground}
         source={{ uri: gameDetails.backgroundImage }}>

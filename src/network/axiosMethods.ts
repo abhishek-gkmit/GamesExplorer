@@ -2,9 +2,9 @@ import { AxiosError, AxiosRequestConfig } from 'axios';
 
 import { axiosInstance } from './axiosInstance';
 
-async function _get(endpoint: string, params?: any) {
+async function _get(endpoint: string, params?: any, signal?: AbortSignal) {
   try {
-    return await axiosInstance.get(endpoint, { params });
+    return await axiosInstance.get(endpoint, { params, signal });
   } catch (error) {
     throw error as AxiosError;
   }

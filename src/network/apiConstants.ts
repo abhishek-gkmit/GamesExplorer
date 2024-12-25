@@ -9,4 +9,7 @@ export const apiEndpoints = {
   login: 'auth/login',
   signUp: 'auth/register',
   gameList: 'games',
+  gameDetails: (gameId: string) => `games/${gameId}`,
+  gameTrailers: (gameId: string) => `games/${gameId}/movies`,
+  screenshots: (gameId: string) => `games/${gameId}/screenshots`,
 };

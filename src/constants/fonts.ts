@@ -35,6 +35,7 @@ const fontFamily = {
 };
 
 const fontSize = {
+  ten: 10,
   twelve: 12,
   fourteen: 14,
   sixteen: 16,
