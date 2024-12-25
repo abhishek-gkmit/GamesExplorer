@@ -12,6 +12,18 @@ function getThemedStyles(colors: Colors) {
       justifyContent: 'center',
       alignItems: 'center',
     },
+
+    flexRow: {
+      flexDirection: 'row',
+    },
+
+    juseifyCenter: {
+      justifyContent: 'center',
+    },
+
+    alignCenter: {
+      alignItems: 'center',
+    },
   });
 }
 

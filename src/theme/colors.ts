@@ -60,6 +60,12 @@ export const colors = {
     inputIconColorUnFocused: commonColors.white3,
     showPasswordBtnIconColor: commonColors.brightGray,
     ratingStarColor: commonColors.meatBrown,
+    detailSeparator: commonColors.white2,
+    chipBorder: commonColors.white2,
+    detailScreen: commonColors.darkGunmetal,
+    searchScreenInputText: commonColors.white5,
+    searchScreenBackBtnBackground: commonColors.darkGunmetal,
+    searchScreenBackBtn: commonColors.malachite,
   },
 
   light: {
@@ -77,5 +83,11 @@ export const colors = {
     inputIconColorUnFocused: commonColors.black3,
     showPasswordBtnIconColor: commonColors.black5,
     ratingStarColor: commonColors.cadmiumOrange,
+    detailSeparator: commonColors.black2,
+    chipBorder: commonColors.black2,
+    detailScreen: commonColors.platinum,
+    searchScreenInputText: commonColors.black5,
+    searchScreenBackBtnBackground: commonColors.white,
+    searchScreenBackBtn: commonColors.malachite,
   },
 };
