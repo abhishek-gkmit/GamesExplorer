@@ -22,4 +22,32 @@ function ellipsize(text: string, length: number) {
   return text;
 }
 
-export { setTokenInterceptor, ellipsize };
+function removeHtmlTags(htmlText: string) {
+  return htmlText.replace(/<[^>]*>/g, '');
+}
+
+// returns game platform icon name by the platform name
+function getPlatformIconName(platform: string) {
+  switch (platform.toLowerCase()) {
+    case 'pc':
+      return 'microsoft-windows';
+    case 'xbox':
+      return 'microsoft-xbox';
+    case 'playstation':
+      return 'sony-playstation';
+    case 'ios':
+      return 'apple-ios';
+    case 'android':
+      return 'android';
+    case 'mac':
+      return 'apple';
+    case 'linux':
+      return 'linux';
+    case 'nintendo':
+      return 'nintendo-switch';
+    default:
+      return 'web';
+  }
+}
+
+export { setTokenInterceptor, ellipsize, removeHtmlTags, getPlatformIconName };
