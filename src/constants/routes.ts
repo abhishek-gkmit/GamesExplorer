@@ -2,6 +2,7 @@ const ROUTES = {
   MainStack: {
     BottomTabs: 'BottomTabs',
     GameDetails: 'GameDetails',
+    CollectionsMgmt: 'CollectionsMgmt',
   },
 
   BottomTabs: {
