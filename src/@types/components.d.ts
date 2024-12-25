@@ -10,10 +10,7 @@ import {
 } from 'react-native/types';
 
 declare global {
-  interface TextBlockProps extends TextProps {
-    style?: StyleProp<TextStyle>;
-    children?: string | string[];
-  }
+  type TextBlockProps = TextProps;
 
   interface Icon {
     name: string;
@@ -83,6 +80,8 @@ declare global {
 
   interface GamePlatformsProps {
     platforms: string[];
+    iconSize?: number;
+    style?: StyleProp<ViewStyle>;
   }
 
   interface RatingProps {
@@ -110,5 +109,16 @@ declare global {
     textStyle?: StyleProp<TextStyle>;
     scrollView?: StyleProp<ViewStyle>;
     scrollViewContent?: StyleProp<ViewStyle>;
+  }
+
+  interface ChipProps {
+    text: string;
+    onPress?: () => void;
+    style?: StyleProp<ViewStyle>;
+    textStyle?: StyleProp<TextStyle>;
+  }
+
+  interface GamePlatformsDetaildProps {
+    platforms: GamePlatform[];
   }
 }
