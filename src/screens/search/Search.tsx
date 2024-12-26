@@ -62,6 +62,7 @@ function Search() {
           onFocus={handleFocus}
           onBlur={handleBlur}
           style={styles.searchInput}
+          cursorColor={colors.secondary}
         />
       </Animated.View>
 

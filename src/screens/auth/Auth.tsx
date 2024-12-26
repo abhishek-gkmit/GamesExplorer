@@ -26,9 +26,9 @@ import { appLogo, loginBackground } from '@constants/images';
 import authStyles from './styles';
 
 const initialFormData = {
-  username: 'Akshat_Gupta',
-  email: 'akshatgupta0030@gmail.com',
-  password: 'Akshat@3011i',
+  username: 'abhi_811',
+  email: 'abhirathore1234@gmail.com',
+  password: 'Zzzz@9876',
 };
 
 function validateFormData(formData: AuthFormData, isLoginForm: boolean) {

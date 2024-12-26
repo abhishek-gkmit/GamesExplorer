@@ -97,6 +97,11 @@ function GameCard({ gameDetails }: GameCardProps) {
 
           <TouchableOpacity
             activeOpacity={0.9}
+            onPress={() =>
+              navigation.navigate(ROUTES.MainStack.CollectionsMgmt, {
+                gameId: gameDetails.id,
+              })
+            }
             style={styles.addToCollectionsBtn}>
             <MaterialCommunityIcons
               name="plus"

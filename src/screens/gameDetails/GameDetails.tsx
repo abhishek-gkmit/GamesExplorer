@@ -17,6 +17,7 @@ import useGameDetailsQuery from '@network/hooks/useGameDetailsQuery';
 import { useAppSelector } from '@store/index';
 import { selectTheme } from '@store/selectors/theme';
 import { getPlatformIconName, removeHtmlTags } from '@utility/helpers';
+import ROUTES from '@constants/routes';
 import { ageRating } from '@constants';
 
 import gameDetailsStyles from './styles';
@@ -197,10 +198,7 @@ function VideoAndImageCarousel({ data }: { data?: GameDetails }) {
       style={styles.insights}
       showsHorizontalScrollIndicator={false}
       contentContainerStyle={styles.insightsContent}>
-      <CustomVideo
-        trailerUrl={data?.trailer}
-        backgroundUrl={data!.gameLogo}
-      />
+      <CustomVideo trailerUrl={data?.trailer} backgroundUrl={data!.gameLogo} />
 
       {data?.screenshots.map((insightImageUrl, i) => (
         <FastImage
@@ -237,7 +235,7 @@ function GameDetails() {
   const navigation = useNavigation<MainStackNavigationProp>();
   const route = useRoute<MainStackRouteProp>();
 
-  const { data, loading } = useGameDetailsQuery(route.params!.gameId);
+  const { data, loading } = useGameDetailsQuery(route.params!.gameId + '');
 
   const { colors } = useAppSelector(selectTheme);
 
@@ -266,6 +264,11 @@ function GameDetails() {
         style={styles.addToCollectionsBtn}
         textStyle={styles.addToCollectionsBtnText}
         text="Add to collection"
+        onPress={() =>
+          navigation.navigate(ROUTES.MainStack.CollectionsMgmt, {
+            gameId: data!.id,
+          })
+        }
       />
 
       <VideoAndImageCarousel data={data} />

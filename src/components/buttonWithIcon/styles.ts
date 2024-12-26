@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native';
 
 import { moderateScale } from '@utility/scalingHelpers';
+import { fontFamily } from '@constants/fonts';
 
 function getThemedStyles(colors: Colors) {
   return StyleSheet.create({
@@ -14,6 +15,8 @@ function getThemedStyles(colors: Colors) {
     buttonText: {
       flex: 1,
       color: colors.foreground,
+      textAlign: 'center',
+      fontFamily: fontFamily.MontserratMedium,
     },
   });
 }
