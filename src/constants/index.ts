@@ -50,4 +50,15 @@ const ageRating: { [key: string]: any } = {
   'rating-pending': { age: null, color: '#808080' },
 };
 
-export { colorSchemes, categoryFilters, ageRating, platformFilters };
+const iconFamilies = {
+  material: 'MaterialIcons',
+  materialCommunity: 'MaterialCommunityIcons',
+} as const;
+
+export {
+  colorSchemes,
+  categoryFilters,
+  ageRating,
+  platformFilters,
+  iconFamilies,
+};

@@ -12,4 +12,17 @@ export const apiEndpoints = {
   gameDetails: (gameId: string) => `games/${gameId}`,
   gameTrailers: (gameId: string) => `games/${gameId}/movies`,
   screenshots: (gameId: string) => `games/${gameId}/screenshots`,
+  addGameToCollection: (collectionId: number) =>
+    `/collections/${collectionId}/games`,
+  deleteGameFromCollection: (collectionId: number) =>
+    `/collections/${collectionId}/games`,
+  newCollection: '/collections',
+  deleteCollection: (collectionId: number) => `/collections/${collectionId}`,
+  deleteAndUpdateCollection: (collectionId: number) =>
+    `/collections/${collectionId}`,
+  getCollectionFeed: (collectionId: number) =>
+    `/collections/${collectionId}/feed`,
+  getAllCollections: (userId: number) => `/users/${userId}/collections`,
+  getGameCollections: (gameId: number) =>
+    `/users/current/collections/${gameId}`,
 };

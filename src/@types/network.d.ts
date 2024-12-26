@@ -67,3 +67,9 @@ interface GameListFilters {
   metacritic?: string;
   ordering?: string;
 }
+
+interface GameCollection {
+  id: number;
+  name: string;
+  backgroundImage: string;
+}

@@ -38,9 +38,9 @@ async function _put(endpoint: string, body: any) {
   }
 }
 
-async function _del(endpoint: string, params?: any) {
+async function _del(endpoint: string, params?: any, data?: any) {
   try {
-    return await axiosInstance.delete(endpoint, { params });
+    return await axiosInstance.delete(endpoint, { params, data });
   } catch (error) {
     throw error as AxiosError;
   }
