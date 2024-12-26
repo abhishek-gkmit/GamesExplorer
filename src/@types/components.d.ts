@@ -1,3 +1,4 @@
+import { iconFamilies } from '@constants';
 import { ReactElement } from 'react';
 import { TouchableOpacityProps } from 'react-native-gesture-handler';
 import {
@@ -11,6 +12,8 @@ import {
 
 declare global {
   type TextBlockProps = TextProps;
+
+  type IconFamilies = (typeof iconFamilies)[keyof typeof iconFamilies];
 
   interface Icon {
     name: string;
@@ -42,6 +45,7 @@ declare global {
     icon: Icon;
     btnStyle?: StyleProp<ViewStyle>;
     iconStyle?: StyleProp<ViewStyle>;
+    iconFamily?: IconFamilies;
   }
 
   interface CustomLoaderProps {
@@ -120,5 +124,15 @@ declare global {
 
   interface GamePlatformsDetaildProps {
     platforms: GamePlatform[];
+  }
+
+  interface CollectionCardPropos {
+    collection: GameCollection;
+    hasGameAdded: boolean;
+  }
+
+  interface CreateNewCollectionProps {
+    cancelNewCollection: () => void;
+    gameId: number;
   }
 }

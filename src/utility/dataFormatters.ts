@@ -106,4 +106,42 @@ function formatGameDetails(data: any, trailerData: any, screenshotsData: any) {
   return formattedGameDetails;
 }
 
-export { formatGameDetailsList, formatGameDetails };
+function formatCollections(data: any) {
+  const results: any[] = data?.results;
+
+  if (!results) {
+    return [];
+  }
+
+  const formattedCollections: GameCollection[] = results.map(
+    (collection: any) => {
+      const { id, name, game_background } = collection;
+      const backgroundImage = game_background?.url;
+
+      return { id, name, backgroundImage };
+    },
+  );
+
+  return formattedCollections.sort((a, b) => a.id - b.id);
+}
+
+function formatCollectionsOfGames(data: any[]) {
+  const formattedCollections = data
+    ?.filter(collection => collection.game_in_collection)
+    .map(collection => collection.id) as number[];
+
+  return formattedCollections;
+}
+
+function formatNewCollection(data: any) {
+  const { id, name, game_background } = data;
+  return { id, name, backgroundImage: game_background } as GameCollection;
+}
+
+export {
+  formatGameDetailsList,
+  formatGameDetails,
+  formatCollections,
+  formatCollectionsOfGames,
+  formatNewCollection,
+};

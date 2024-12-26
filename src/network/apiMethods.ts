@@ -1,10 +1,13 @@
 import {
+  formatCollections,
+  formatCollectionsOfGames,
   formatGameDetails,
   formatGameDetailsList,
+  formatNewCollection,
 } from '@utility/dataFormatters';
 
 import { apiConstants, apiEndpoints } from './apiConstants';
-import { _get, _post, _postForAuth } from './axiosMethods';
+import { _del, _get, _post, _postForAuth } from './axiosMethods';
 import { platformFilters } from '@constants';
 
 async function login(email: string, password: string) {
@@ -76,4 +79,71 @@ async function getGameDetails(gameId: string) {
   return formatGameDetails(res.data, trailersRes.data, screenshotsRes.data);
 }
 
-export { login, signUp, getGamesList, getGameDetails };
+async function addGameToCollection(gameId: number, collectionId: number) {
+  const body = {
+    games: [gameId],
+  };
+
+  await _post(apiEndpoints.addGameToCollection(collectionId), body);
+  return true;
+}
+
+async function removeGameFromCollection(gameId: number, collectionId: number) {
+  const body = {
+    games: [gameId],
+  };
+
+  await _del(
+    apiEndpoints.deleteGameFromCollection(collectionId),
+    undefined,
+    body,
+  );
+  return true;
+}
+
+async function createNewCollection(name: string) {
+  const body = {
+    name,
+    description: '',
+    is_private: false,
+  };
+
+  const res = await _post(apiEndpoints.newCollection, body);
+
+  return formatNewCollection(res.data);
+}
+
+async function deleteCollection(collectionId: number) {
+  await _del(apiEndpoints.deleteCollection(collectionId));
+}
+
+async function updateCollection(collectionId: number, name: string) { }
+
+async function getCollectionFeed(collectionId: number) { }
+
+async function getAllCollections() {
+  const res = await _get(apiEndpoints.getAllCollections(742560));
+
+  return formatCollections(res.data);
+}
+
+async function getCollectionsOfGames(gameId: number) {
+  const res = await _get(apiEndpoints.getGameCollections(gameId));
+
+  return formatCollectionsOfGames(res.data);
+}
+
+export {
+  login,
+  signUp,
+  getGamesList,
+  getGameDetails,
+  addGameToCollection,
+  getAllCollections,
+  getCollectionsOfGames,
+  getCollectionFeed,
+  updateCollection,
+  deleteCollection,
+  createNewCollection,
+  removeGameFromCollection,
+};

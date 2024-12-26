@@ -4,6 +4,7 @@ const commonColors = {
   errorDark: '#ff0000',
 
   darkGunmetal: '#18222c',
+  gunmetal: '#253441',
   paleViolet: '#c9a0ff',
   tropicalIndigo: '#8b8eff',
   coralRed: '#ff3c36',
@@ -20,6 +21,7 @@ const commonColors = {
   greenPigment: '#06aa58',
   meatBrown: '#ea8c31',
   cadmiumOrange: '#ea8c31',
+  charcoal: '#36454F',
   black: '#000000',
   black0: 'rgba(0, 0, 0, 0.0)',
   black1: 'rgba(0, 0, 0, 0.1)',
@@ -66,6 +68,7 @@ export const colors = {
     searchScreenInputText: commonColors.white5,
     searchScreenBackBtnBackground: commonColors.darkGunmetal,
     searchScreenBackBtn: commonColors.malachite,
+    collectionCardBackground: commonColors.gunmetal,
   },
 
   light: {
@@ -89,5 +92,6 @@ export const colors = {
     searchScreenInputText: commonColors.black5,
     searchScreenBackBtnBackground: commonColors.white,
     searchScreenBackBtn: commonColors.malachite,
+    collectionCardBackground: commonColors.glacierGray,
   },
 };

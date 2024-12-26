@@ -9,7 +9,9 @@ declare global {
     [ROUTES.MainStack.GameDetails]: {
       gameId: string;
     };
-    [ROUTES.MainStack.CollectionsMgmt]: undefined;
+    [ROUTES.MainStack.CollectionsMgmt]: {
+      gameId: number;
+    };
   };
   type MainStackNavigationProp = NavigationProp<MainStackParamList>;
   type MainStackRouteProp = RouteProp<MainStackParamList>;
