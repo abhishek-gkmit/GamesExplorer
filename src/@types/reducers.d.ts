@@ -7,4 +7,5 @@ interface ThemeState {
 interface UserState {
   isUserLoggedIn: boolean;
   userKey: string;
+  userDetails: UserDetails;
 }

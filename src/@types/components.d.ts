@@ -1,5 +1,6 @@
 import { iconFamilies } from '@constants';
 import { ReactElement } from 'react';
+import { ImageStyle } from 'react-native-fast-image';
 import { TouchableOpacityProps } from 'react-native-gesture-handler';
 import {
   StyleProp,
@@ -8,6 +9,7 @@ import {
   TextStyle,
   ViewStyle,
   FlatListProps,
+  ViewProps,
 } from 'react-native/types';
 
 declare global {
@@ -128,11 +130,15 @@ declare global {
 
   interface CollectionCardPropos {
     collection: GameCollection;
-    hasGameAdded: boolean;
+    style?: StyleProp<ViewStyle>;
+    imageStyle?: StyleProp<ImageStyle>;
+    textStyle?: StyleProp<TextStyle>;
   }
 
-  interface CreateNewCollectionProps {
-    cancelNewCollection: () => void;
-    gameId: number;
+  interface CreateOrEditCollectionProps extends ViewProps {
+    cancelAction: () => void;
+    gameId?: number;
+    collection?: Pick<GameCollection, 'id' | 'name'>;
+    isEdit?: boolean;
   }
 }

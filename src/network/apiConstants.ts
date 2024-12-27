@@ -18,6 +18,7 @@ export const apiEndpoints = {
     `/collections/${collectionId}/games`,
   newCollection: '/collections',
   deleteCollection: (collectionId: number) => `/collections/${collectionId}`,
+  updateCollection: (collectionId: number) => `/collections/${collectionId}`,
   deleteAndUpdateCollection: (collectionId: number) =>
     `/collections/${collectionId}`,
   getCollectionFeed: (collectionId: number) =>
@@ -25,4 +26,5 @@ export const apiEndpoints = {
   getAllCollections: (userId: number) => `/users/${userId}/collections`,
   getGameCollections: (gameId: number) =>
     `/users/current/collections/${gameId}`,
+  currentUserDetails: '/users/current',
 };

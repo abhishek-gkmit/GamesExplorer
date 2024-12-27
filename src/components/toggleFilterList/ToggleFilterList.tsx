@@ -74,9 +74,11 @@ function ToggleFilterList({
 
   return (
     <View style={StyleSheet.compose(styles.scrollViewContainer, style)}>
-      <TextBlock style={StyleSheet.compose(styles.title, textStyle)}>
-        {title || 'Select item'}
-      </TextBlock>
+      {title ? (
+        <TextBlock style={StyleSheet.compose(styles.title, textStyle)}>
+          {title}
+        </TextBlock>
+      ) : null}
 
       <ScrollView
         horizontal

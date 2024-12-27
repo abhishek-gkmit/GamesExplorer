@@ -10,6 +10,7 @@ function gameCardStyles(colors: Colors) {
   return StyleSheet.create({
     gameCard: {
       borderRadius: moderateScale(10),
+      elevation: 10,
     },
 
     gameCardBackground: {
@@ -40,6 +41,8 @@ function gameCardStyles(colors: Colors) {
     },
 
     name: {
+      alignItems: 'center',
+      justifyContent: 'center',
       fontSize: fontSize.eighteen,
       fontFamily: fontFamily.MontserratMedium,
       color: colors.white,

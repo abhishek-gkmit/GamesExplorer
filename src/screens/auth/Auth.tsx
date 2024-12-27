@@ -26,9 +26,9 @@ import { appLogo, loginBackground } from '@constants/images';
 import authStyles from './styles';
 
 const initialFormData = {
-  username: 'abhi_811',
-  email: 'abhirathore1234@gmail.com',
-  password: 'Zzzz@9876',
+  username: '',
+  email: '',
+  password: '',
 };
 
 function validateFormData(formData: AuthFormData, isLoginForm: boolean) {
@@ -123,10 +123,6 @@ function Auth() {
 
   const globalStyles = useGlobalStyles();
 
-  if (loading) {
-    return <Loader />;
-  }
-
   return (
     <FastImage
       style={[globalStyles.screen, styles.authScreen]}
@@ -137,7 +133,7 @@ function Auth() {
           <TextBlock style={styles.appName}>Games Explorer</TextBlock>
         </FadeInSlideUp>
 
-        <KeyboardAvoidingView contentContainerStyle={{ backgroundColor: 'red' }}>
+        <KeyboardAvoidingView>
           <ImageBackground
             style={styles.formContainer}
             blurRadius={60}
@@ -183,12 +179,16 @@ function Auth() {
             </FadeInSlideUp>
 
             <FadeInSlideUp delay={300}>
-              <ButtonWithIcon
-                text={isLoginForm ? 'Login' : 'Sign Up'}
-                onPress={handleSubmit}
-                style={styles.submitBtn}
-                textStyle={styles.submitBtnText}
-              />
+              {loading ? (
+                <Loader style={styles.loader} />
+              ) : (
+                <ButtonWithIcon
+                  text={isLoginForm ? 'Login' : 'Sign Up'}
+                  onPress={handleSubmit}
+                  style={styles.submitBtn}
+                  textStyle={styles.submitBtnText}
+                />
+              )}
             </FadeInSlideUp>
 
             <FadeInSlideUp delay={400}>

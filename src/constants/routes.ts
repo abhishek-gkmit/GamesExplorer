@@ -3,6 +3,7 @@ const ROUTES = {
     BottomTabs: 'BottomTabs',
     GameDetails: 'GameDetails',
     CollectionsMgmt: 'CollectionsMgmt',
+    CollectionGames: 'CollectionGames',
   },
 
   BottomTabs: {

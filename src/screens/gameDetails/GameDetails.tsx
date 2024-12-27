@@ -103,7 +103,7 @@ function GameDescription({ description }: { description: string }) {
       <View style={styles.descriptionHeadingContainer}>
         <TextBlock style={styles.descriptionHeading}>About this game</TextBlock>
         <MaterialIcons
-          name={showFullDesc ? 'keyboard-arrow-down' : 'keyboard-arrow-right'}
+          name={showFullDesc ? 'keyboard-arrow-down' : 'keyboard-arrow-up'}
           size={20}
           color={colors.foreground}
         />
@@ -233,7 +233,7 @@ function Separator() {
 
 function GameDetails() {
   const navigation = useNavigation<MainStackNavigationProp>();
-  const route = useRoute<MainStackRouteProp>();
+  const route = useRoute<GameDetailsRouteProp>();
 
   const { data, loading } = useGameDetailsQuery(route.params!.gameId + '');
 

@@ -46,4 +46,12 @@ async function _del(endpoint: string, params?: any, data?: any) {
   }
 }
 
-export { _get, _post, _postForAuth, _put, _del };
+async function _patch(endpoint: string, body: any) {
+  try {
+    return await axiosInstance.patch(endpoint, body);
+  } catch (error) {
+    throw error as AxiosError;
+  }
+}
+
+export { _get, _post, _postForAuth, _put, _del, _patch };

@@ -88,6 +88,12 @@ function authStyles(colors: Colors) {
       fontSize: fontSize.sixteen,
       fontFamily: fontFamily.MontserratMedium,
     },
+
+    loader: {
+      height: 20,
+      marginTop: verticalScale(20),
+      marginBottom: verticalScale(21),
+    },
   });
 }
 

@@ -16,18 +16,30 @@ function useGamesListQuery(
         getGamesList(pageParam, categories, searchQuery, platforms, signal),
       initialPageParam: 1,
       getNextPageParam: (lastPage, pages, lastPageParam) => {
-        return lastPageParam + 1;
+        const { hasNextPage } = lastPage;
+
+        if (hasNextPage) {
+          return lastPageParam + 1;
+        }
       },
       staleTime: Infinity,
     },
   );
 
   const gamesList = useMemo(() => {
-    return data?.pages.reduce((prev, current) => [...prev, ...current], []);
+    return data?.pages.reduce((prev, current) => {
+      return {
+        formattedGamesList: [
+          ...prev.formattedGamesList,
+          ...current.formattedGamesList,
+        ],
+        hasNextPage: current.hasNextPage,
+      };
+    });
   }, [data]);
 
   const getNextPage = useCallback(() => {
-    !isFetchingNextPage && gamesList?.length && fetchNextPage();
+    !isFetchingNextPage && gamesList?.hasNextPage && fetchNextPage();
   }, [gamesList]);
 
   return { gamesList, isLoading, getNextPage };
