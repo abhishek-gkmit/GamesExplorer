@@ -12,7 +12,7 @@ export async function handleError(error: AxiosError) {
   } else if (statusCode === 500) {
     showErrorToast('Server Error', 'There is an error on server side');
   } else {
-    showErrorToast('Unknown Error', 'Please contact the developer');
+    showErrorToast('Error', 'Server error, please try again after some time.');
   }
 
   return error;

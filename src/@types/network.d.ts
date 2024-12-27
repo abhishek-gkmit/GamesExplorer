@@ -72,4 +72,12 @@ interface GameCollection {
   id: number;
   name: string;
   backgroundImage: string;
+  gamesCount: number;
+}
+
+interface UserDetails {
+  id: number;
+  email: string;
+  username: string;
+  fullName: string;
 }

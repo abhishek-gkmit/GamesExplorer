@@ -1,18 +1,24 @@
-import { allCollections, gameCollections } from '@constants/query';
-import { getAllCollections, getCollectionsOfGames } from '@network/apiMethods';
 import { useQuery } from '@tanstack/react-query';
 
-function useCollectionsQuery(gameId: number) {
+import { getAllCollections, getCollectionsOfGames } from '@network/apiMethods';
+import { allCollections, gameCollections } from '@constants/query';
+import { useAppSelector } from '@store/index';
+
+function useCollectionsQuery(gameId?: number) {
+  const userDetails = useAppSelector(state => state.user.userDetails);
+
   const { data: collections, isFetching: isFetchingAllCollections } = useQuery({
     queryKey: [allCollections],
-    queryFn: () => getAllCollections(),
+    queryFn: () => getAllCollections(userDetails.id),
   });
 
   const { data: gameInCollections, isFetching: isFetchingGameCollections } =
-    useQuery({
-      queryKey: [gameCollections, gameId],
-      queryFn: () => getCollectionsOfGames(gameId),
-    });
+    gameId
+      ? useQuery({
+        queryKey: [gameCollections, gameId],
+        queryFn: () => getCollectionsOfGames(gameId),
+      })
+      : { data: undefined, isFetching: false };
 
   return {
     collections,

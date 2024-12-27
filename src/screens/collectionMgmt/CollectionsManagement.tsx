@@ -2,29 +2,34 @@ import { useCallback, useState } from 'react';
 import { ScrollView, TouchableOpacity, View, TextInput } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import FastImage from 'react-native-fast-image';
 
 import TextBlock from '@components/customText';
 import ButtonWithIcon from '@components/buttonWithIcon';
 import IconButton from '@components/iconButton';
 import Loader from '@components/customLoader';
+import CollectionCard from '@components/cllectionCard';
 import useStyles from '@hooks/useStyles';
 import useCollectionsQuery from '@network/hooks/useCollectionsQuery';
 import useCollectionsMutation from '@network/hooks/useCollectionsMutation';
 import { useAppSelector } from '@store/index';
 import { selectTheme } from '@store/selectors/theme';
-import { showInfoToast, showSuccessToast } from '@utility/toastHelpers';
-import { ellipsize } from '@utility/helpers';
 import { iconFamilies } from '@constants';
-import { collectionCardPlaceholder } from '@constants/images';
 
 import collectionsMgmtStyles from './styles';
+import CreateOrEditCollection from '@components/createOrEditCollection/CreateOrEditCollection';
 
-function CollectionCard({ collection, hasGameAdded }: CollectionCardPropos) {
+interface CollectionCardManagerProps extends CollectionCardPropos {
+  hasGameAdded: boolean;
+}
+
+function CollectionCardManager({
+  collection,
+  hasGameAdded,
+}: CollectionCardManagerProps) {
   const [checked, setChecked] = useState(hasGameAdded);
   const [loading, setLoading] = useState(false);
 
-  const route = useRoute<MainStackRouteProp>();
+  const route = useRoute<CollectionsMgmtRouteProp>();
   const gameId = +route.params!.gameId;
 
   const { colors } = useAppSelector(selectTheme);
@@ -38,15 +43,17 @@ function CollectionCard({ collection, hasGameAdded }: CollectionCardPropos) {
 
     setLoading(true);
     if (checked) {
-      removeFromCollection.mutate(collectionId, {
-        onSuccess: () => setChecked(false),
-        onSettled: () => setLoading(false),
-      });
+      removeFromCollection &&
+        removeFromCollection.mutate(collectionId, {
+          onSuccess: () => setChecked(false),
+          onSettled: () => setLoading(false),
+        });
     } else {
-      addToCollection.mutate(collectionId, {
-        onSuccess: () => setChecked(true),
-        onSettled: () => setLoading(false),
-      });
+      addToCollection &&
+        addToCollection.mutate(collectionId, {
+          onSuccess: () => setChecked(true),
+          onSettled: () => setLoading(false),
+        });
     }
 
     return true;
@@ -61,19 +68,10 @@ function CollectionCard({ collection, hasGameAdded }: CollectionCardPropos) {
 
   return (
     <TouchableOpacity
-      style={styles.collectionCard}
-      activeOpacity={0.9}
+      style={styles.collectionCardManager}
+      activeOpacity={0.95}
       onPress={handleCollectionPress}>
-      <View style={styles.collectionImageAndNameContainer}>
-        <FastImage
-          source={{ uri: collection.backgroundImage }}
-          defaultSource={collectionCardPlaceholder}
-          style={styles.collectionImage}
-        />
-        <TextBlock style={styles.collectionName}>
-          {ellipsize(collection.name, 25)}
-        </TextBlock>
-      </View>
+      <CollectionCard collection={collection} />
 
       <View>
         {loading ? (
@@ -90,69 +88,13 @@ function CollectionCard({ collection, hasGameAdded }: CollectionCardPropos) {
   );
 }
 
-function CreateNewCollection({
-  cancelNewCollection,
-  gameId,
-}: CreateNewCollectionProps) {
-  const [collectionName, setCollectionName] = useState('');
-
-  const { createCollection } = useCollectionsMutation(gameId);
-
-  const handlePress = () => {
-    if (collectionName === '') {
-      showInfoToast('Info', 'Empty collection name not allowed.');
-      return;
-    }
-
-    createCollection.mutate(collectionName, {
-      onSettled: () => {
-        cancelNewCollection();
-        showSuccessToast('Success', 'Collection created.');
-      },
-    });
-  };
-
-  const { colors } = useAppSelector(selectTheme);
-  const styles = useStyles(collectionsMgmtStyles);
-
-  return (
-    <View style={styles.createNewCollection}>
-      <TextBlock style={styles.createNewCollectionHeading}>
-        Create new collection
-      </TextBlock>
-      <TextInput
-        value={collectionName}
-        onChangeText={text => setCollectionName(text)}
-        style={styles.nameInput}
-        cursorColor={colors.secondary}
-        autoFocus
-        autoCapitalize="sentences"
-        placeholder="Enter collection name"
-      />
-
-      <View style={styles.btnsContainer}>
-        <ButtonWithIcon
-          text="Cancel"
-          style={styles.cancelBtn}
-          onPress={cancelNewCollection}
-        />
-        <ButtonWithIcon
-          text="Create"
-          style={styles.createBtn}
-          onPress={handlePress}
-        />
-      </View>
-    </View>
-  );
-}
-
 function CollectionsManagement() {
   const [isCreatingNewCollection, setIsCreatingNewCollection] = useState(false);
 
   const navigation = useNavigation<MainStackNavigationProp>();
-  const route = useRoute<MainStackRouteProp>();
+  const route = useRoute<CollectionsMgmtRouteProp>();
 
-  const gameId = +route.params!.gameId;
+  const gameId = route.params.gameId;
 
   const { collections, gameInCollections } = useCollectionsQuery(gameId);
 
@@ -186,7 +128,7 @@ function CollectionsManagement() {
                 collectionId => collection.id === collectionId,
               );
               return (
-                <CollectionCard
+                <CollectionCardManager
                   key={collection.id}
                   collection={collection}
                   hasGameAdded={hasGameAdded}
@@ -196,9 +138,9 @@ function CollectionsManagement() {
         </ScrollView>
 
         {isCreatingNewCollection ? (
-          <CreateNewCollection
+          <CreateOrEditCollection
             gameId={gameId}
-            cancelNewCollection={() => setIsCreatingNewCollection(false)}
+            cancelAction={() => setIsCreatingNewCollection(false)}
           />
         ) : (
           <ButtonWithIcon

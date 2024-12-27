@@ -7,7 +7,7 @@ function bottomTabBarStyles(colors: Colors) {
     tabsContainer: {
       flexDirection: 'row',
       justifyContent: 'center',
-      backgroundColor: colors.background,
+      backgroundColor: colors.gunmetal,
       height: verticalScale(60),
       elevation: 40,
     },
@@ -21,7 +21,7 @@ function bottomTabBarStyles(colors: Colors) {
     },
 
     tab: {
-      backgroundColor: colors.background,
+      backgroundColor: colors.gunmetal,
       borderRadius: moderateScale(200),
     },
   });

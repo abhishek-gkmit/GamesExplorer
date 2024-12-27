@@ -54,24 +54,14 @@ function collectionsMgmtStyles(colors: Colors) {
       elevation: 10,
     },
 
-    collectionCard: {
+    collectionCardManager: {
       flexDirection: 'row',
       justifyContent: 'space-between',
       alignItems: 'center',
-      padding: moderateScale(10),
       backgroundColor: colors.collectionCardBackground,
       borderRadius: moderateScale(10),
       elevation: 5,
-    },
-
-    collectionName: {
-      verticalAlign: 'middle',
-      fontFamily: fontFamily.MontserratMedium,
-    },
-
-    collectionImageAndNameContainer: {
-      flexDirection: 'row',
-      gap: moderateScale(10),
+      paddingRight: horizontalScale(10),
     },
 
     collectionImage: {
@@ -88,42 +78,6 @@ function collectionsMgmtStyles(colors: Colors) {
       marginBottom: verticalScale(10),
       backgroundColor: colors.secondary,
       fontFamily: fontFamily.MontserratSemiBold,
-    },
-
-    createNewCollection: {
-      gap: verticalScale(20),
-      justifyContent: 'center',
-      padding: moderateScale(15),
-      elevation: 10,
-    },
-
-    createNewCollectionHeading: {
-      fontSize: fontSize.eighteen,
-      fontFamily: fontFamily.MontserratMedium,
-    },
-
-    nameInput: {
-      backgroundColor: colors.background,
-      color: colors.foreground,
-      borderWidth: moderateScale(2),
-      borderRadius: moderateScale(10),
-      borderColor: colors.primary,
-      padding: moderateScale(10),
-    },
-
-    btnsContainer: {
-      flexDirection: 'row',
-      gap: horizontalScale(20),
-    },
-
-    cancelBtn: {
-      flex: 1,
-      backgroundColor: colors.backgroundLighter,
-    },
-
-    createBtn: {
-      flex: 1,
-      backgroundColor: colors.secondary,
     },
   });
 }

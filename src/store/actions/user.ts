@@ -17,4 +17,15 @@ function removeUserKeyAction(state: UserState) {
   clearUserKey();
 }
 
-export { setUserKeyAction, removeUserKeyAction };
+function setUserDetailsAction(
+  state: UserState,
+  action: PayloadAction<UserDetails>,
+) {
+  if (!action.payload) {
+    return;
+  }
+
+  state.userDetails = action.payload;
+}
+
+export { setUserKeyAction, removeUserKeyAction, setUserDetailsAction };

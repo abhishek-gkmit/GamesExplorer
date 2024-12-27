@@ -30,9 +30,7 @@ function formatScreenshots(screenshotsData: any) {
   return results.map(screenshot => screenshot?.image) as string[];
 }
 
-function formatGameDetailsList(data: any) {
-  const results = data?.results;
-
+function formatGameDetailsList(results: any[]) {
   const formattedGames: GameDetailsShort[] = results?.map(
     ({
       id,
@@ -115,10 +113,10 @@ function formatCollections(data: any) {
 
   const formattedCollections: GameCollection[] = results.map(
     (collection: any) => {
-      const { id, name, game_background } = collection;
+      const { id, name, game_background, games_count } = collection;
       const backgroundImage = game_background?.url;
 
-      return { id, name, backgroundImage };
+      return { id, name, backgroundImage, gamesCount: games_count };
     },
   );
 
@@ -134,8 +132,30 @@ function formatCollectionsOfGames(data: any[]) {
 }
 
 function formatNewCollection(data: any) {
-  const { id, name, game_background } = data;
-  return { id, name, backgroundImage: game_background } as GameCollection;
+  const { id, name, game_background, games_count } = data;
+  return {
+    id,
+    name,
+    backgroundImage: game_background?.url,
+    gamesCount: games_count,
+  } as GameCollection;
+}
+
+function formatCollectionFeed(data: any) {
+  const results: any[] = data?.results;
+
+  const hasNextPage: string | null = data?.next;
+
+  const gamesOfCollection = results.map(feed => feed?.game);
+  const formattedGamesOfCollections = formatGameDetailsList(gamesOfCollection);
+
+  return { formattedGamesOfCollections, hasNextPage };
+}
+
+function formatUserDetails(data: any) {
+  const { id, email, username, full_name } = data;
+
+  return { id, email, username, fullName: full_name } as UserDetails;
 }
 
 export {
@@ -144,4 +164,6 @@ export {
   formatCollections,
   formatCollectionsOfGames,
   formatNewCollection,
+  formatCollectionFeed,
+  formatUserDetails,
 };

@@ -1,13 +1,15 @@
 import {
+  formatCollectionFeed,
   formatCollections,
   formatCollectionsOfGames,
   formatGameDetails,
   formatGameDetailsList,
   formatNewCollection,
+  formatUserDetails,
 } from '@utility/dataFormatters';
 
 import { apiConstants, apiEndpoints } from './apiConstants';
-import { _del, _get, _post, _postForAuth } from './axiosMethods';
+import { _del, _get, _patch, _post, _postForAuth } from './axiosMethods';
 import { platformFilters } from '@constants';
 
 async function login(email: string, password: string) {
@@ -68,7 +70,10 @@ async function getGamesList(
 
   const res = await _get(apiEndpoints.gameList, params, signal);
 
-  return formatGameDetailsList(res.data);
+  const hasNextPage: string | null = res.data?.next;
+  const formattedGamesList = formatGameDetailsList(res.data?.results);
+
+  return { formattedGamesList, hasNextPage };
 }
 
 async function getGameDetails(gameId: string) {
@@ -115,14 +120,38 @@ async function createNewCollection(name: string) {
 
 async function deleteCollection(collectionId: number) {
   await _del(apiEndpoints.deleteCollection(collectionId));
+
+  return collectionId;
 }
 
-async function updateCollection(collectionId: number, name: string) { }
+async function updateCollection(collectionId: number, name: string) {
+  const data = {
+    name,
+    description: '',
+    is_private: false,
+  };
 
-async function getCollectionFeed(collectionId: number) { }
+  const res = await _patch(apiEndpoints.updateCollection(collectionId), data);
 
-async function getAllCollections() {
-  const res = await _get(apiEndpoints.getAllCollections(742560));
+  return formatNewCollection(res.data);
+}
+
+async function getCollectionFeed(
+  collectionId: number,
+  page: number,
+  signal?: AbortSignal,
+) {
+  const res = await _get(
+    apiEndpoints.getCollectionFeed(collectionId),
+    { page },
+    signal,
+  );
+
+  return formatCollectionFeed(res.data);
+}
+
+async function getAllCollections(userId: number) {
+  const res = await _get(apiEndpoints.getAllCollections(userId));
 
   return formatCollections(res.data);
 }
@@ -131,6 +160,12 @@ async function getCollectionsOfGames(gameId: number) {
   const res = await _get(apiEndpoints.getGameCollections(gameId));
 
   return formatCollectionsOfGames(res.data);
+}
+
+async function getUserDetails() {
+  const res = await _get(apiEndpoints.currentUserDetails);
+
+  return formatUserDetails(res.data);
 }
 
 export {
@@ -146,4 +181,5 @@ export {
   deleteCollection,
   createNewCollection,
   removeGameFromCollection,
+  getUserDetails,
 };

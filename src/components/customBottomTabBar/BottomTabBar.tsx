@@ -22,6 +22,9 @@ function getIconName(routeName: string) {
     case ROUTES.BottomTabs.Collections:
       return 'my-library-add';
 
+    case ROUTES.BottomTabs.Profile:
+      return 'account-circle-outline';
+
     default:
       return 'question-mark';
   }

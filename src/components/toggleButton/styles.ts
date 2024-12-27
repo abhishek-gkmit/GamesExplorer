@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native';
 
 import { horizontalScale, moderateScale } from '@utility/scalingHelpers';
+import { fontFamily } from '@constants/fonts';
 
 function toggleButtonStyles(colors: Colors) {
   return StyleSheet.create({
@@ -22,10 +23,12 @@ function toggleButtonStyles(colors: Colors) {
 
     text: {
       color: colors.darkGunmetal,
+      fontFamily: fontFamily.MontserratMedium,
     },
 
     textOn: {
       color: colors.foreground,
+      fontFamily: fontFamily.MontserratMedium,
     },
   });
 }

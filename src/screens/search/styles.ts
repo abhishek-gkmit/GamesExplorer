@@ -12,6 +12,11 @@ function searchScreenStyles(colors: Colors) {
       backgroundColor: colors.background,
     },
 
+    searchHeader: {
+      paddingBottom: verticalScale(15),
+      elevation: 10,
+    },
+
     inputContainer: {
       flexDirection: 'row',
       alignItems: 'center',
@@ -32,8 +37,7 @@ function searchScreenStyles(colors: Colors) {
     },
 
     gameList: {
-      marginTop: verticalScale(20),
-      backgroundColor: colors.black4,
+      backgroundColor: colors.background,
     },
 
     gameListContent: {
@@ -43,7 +47,6 @@ function searchScreenStyles(colors: Colors) {
 
     loader: {
       backgroundColor: colors.black4,
-      marginTop: verticalScale(20),
     },
 
     listLoader: {
